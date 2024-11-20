@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book sky</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="one">
+        <nav>
+            <h3>Book Sky</h3>
+        </nav>
+    </div>
+    <div class="container">
+    <div class="two">
+        <h4>Rich Dad Poor Dad</h4>
+        <h5><b>Robert</b></h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea magni illum laudantium id? Architecto eaque magni maiores, corporis omnis quo laborum vitae sint voluptates sequi atque cum reprehenderit nostrum quisquam.</p>
+        <button onclick="clearing(event)" name="Delete">Delete</button>
+    </div>
+    </div>
+    <div id="pop-up"></div>
+    <div id="window">
+        <h4>Book Details</h4>
+        <form id="form-1">
+        
+        <input id="input1" placeholder="Book title">
+        <input id="input2" placeholder="Author">
+        <textarea id="input3" placeholder="Description"></textarea>
+        <br>
+        <button id="button1">Add</button>
+        <button id="button2" name="cancel">Cancel</button>
+        </form>
+    </div>
+    <div id="three">
+        <button id="mainbutton" name="plus">+</button>
+    </div>
+    
+    <script>
+        var button=document.getElementById("mainbutton");
+        var display1=document.getElementById("pop-up");
+        var display2=document.getElementById("window");
+
+        button.addEventListener("click",function(){
+            display1.style.display="block";
+            display2.style.display="block";
+
+        });
+        var a=document.getElementById("input1");
+        var b=document.getElementById("input2");
+        var c=document.getElementById("input3");
+        var bt2=document.getElementById("button2")
+        var bt1=document.getElementById("button1")
+        var container=document.querySelector(".container")
+        bt2.addEventListener("click",function(event)
+        {
+            event.preventDefault()
+            display1.style.display="none";
+            display2.style.display="none";
+        })
+        bt1.addEventListener("click",function(event){
+            event.preventDefault()
+            var div=document.createElement("div")
+            div.setAttribute("class","two")
+            div.innerHTML=`<h4>${a.value}</h4>
+                           <h5><b>${b.value}</b></h5>
+                           <p>${c.value}</p>
+                           <button onclick='clearing(event)' name='Delete'>Delete</button>`
+            container.append(div)
+
+            display1.style.display="none";
+            display2.style.display="none";
+            var clearform=document.getElementById("form-1");
+            clearform.reset();
+
+
+        });
+        function clearing(event)
+        {
+            event.target.parentNode.remove();
+             
+        }
+    
+        
+    </script>
+    
+</body>
+</html>
